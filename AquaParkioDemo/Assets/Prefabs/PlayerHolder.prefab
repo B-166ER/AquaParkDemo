@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 262396944380051648}
   - component: {fileID: 187151559364533132}
   - component: {fileID: 6290883234118556904}
+  - component: {fileID: 4135604290518116775}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Untagged
@@ -234,6 +235,21 @@ MonoBehaviour:
   SidepathPosition: 0
   SideMovementSpeed: 10
   gamePath: {fileID: 0}
+--- !u!114 &4135604290518116775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7616652500523601910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd23e49dcd91cfe4db8ef094607f5013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBody: {fileID: 7771363374958032624}
+  AirSpeed: 4
+  RollMaxAngle: 0.2
 --- !u!1 &7771363374958032624
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,15 +58,20 @@
   <ItemGroup>
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
+    <Compile Include="Assets\GroundMovement.cs" />
     <Compile Include="Assets\PlayerController.cs" />
+    <Compile Include="Assets\JumperBehavior.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
-    <Compile Include="Assets\GroundMovement.cs" />
     <Compile Include="Assets\AirMovement.cs" />
-    <Compile Include="Assets\JumperBehavior.cs" />
     <Compile Include="Assets\RockBehaviour.cs" />
+    <Compile Include="Assets\JumperSpawner.cs" />
+    <Compile Include="Assets\RockSpawner.cs" />
+    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\CountDownController.cs" />
+    <Compile Include="Assets\FinishBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
