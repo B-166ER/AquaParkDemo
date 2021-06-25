@@ -5399,8 +5399,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281632473}
-  m_LocalRotation: {x: -0.021693677, y: -0.0022838127, z: -0.00004955608, w: 0.99976206}
-  m_LocalPosition: {x: 2.51577, y: 5, z: -9.849752}
+  m_LocalRotation: {x: -0.021695703, y: -0.009695083, z: -0.0002104011, w: 0.9997176}
+  m_LocalPosition: {x: 2.6967046, y: 5, z: -9.845894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 504478149}
@@ -10943,7 +10943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0.05877002, y: 0, z: -6.999753}
+  m_FollowOffset: {x: 0.2397045, y: 0, z: -6.995894}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -11690,8 +11690,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.021693677, y: -0.0022838127, z: -0.00004955608, w: 0.99976206}
-  m_LocalPosition: {x: 2.51577, y: 5, z: -9.849752}
+  m_LocalRotation: {x: -0.021695703, y: -0.009695083, z: -0.0002104011, w: 0.9997176}
+  m_LocalPosition: {x: 2.6967046, y: 5, z: -9.845894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12030,7 +12030,7 @@ GameObject:
   - component: {fileID: 1400688914}
   - component: {fileID: 1400688915}
   m_Layer: 0
-  m_Name: Guide (1)
+  m_Name: Guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12683,7 +12683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4e0242674b6e31348bb14f8b0f13ddf8, type: 3}
       propertyPath: m_Name
-      value: _asketball
+      value: Basketball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0242674b6e31348bb14f8b0f13ddf8, type: 3}
@@ -12730,7 +12730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd8a526c0be63f4fbec34c0f832b849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeThreshold: 0
+  swipeThreshold: 10
 --- !u!1 &1917425015
 GameObject:
   m_ObjectHideFlags: 0
