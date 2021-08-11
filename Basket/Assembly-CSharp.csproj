@@ -72,6 +72,11 @@
     <Compile Include="Assets\Scripts\SwipeControls.cs" />
     <Compile Include="Assets\Scripts\CineMachineAxisLock.cs" />
     <Compile Include="Assets\Scripts\GuideBehaviour.cs" />
+    <Compile Include="Assets\Controller2.cs" />
+    <Compile Include="Assets\BallController.cs" />
+    <Compile Include="Assets\Controller1.cs" />
+    <Compile Include="Assets\Controller3.cs" />
+    <Compile Include="Assets\Guide2Behaviour.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
