@@ -6,7 +6,7 @@ public class Controller3 : BallController
 {
     public GameObject front;
     public GameObject basket;
-
+    public GameObject ball;
 
     private float startTime;
     private Vector3 startPos;
@@ -30,6 +30,7 @@ public class Controller3 : BallController
     [Range(0, 4500)]
     [SerializeField] float ballMoveFactor = 6;
 
+    public GameObject hoop;
 
     [Range(5, 2500)]
     [SerializeField] float mouseFactor = 1000f;
@@ -39,11 +40,12 @@ public class Controller3 : BallController
         var mouseUpPos = Input.mousePosition;
         var mouseVector = mouseUpPos - startPos;
 
+        var ballToHoopVector = hoop.transform.position - gameObject.transform.position;
+        var ballToHoopAngle = Vector3.Angle(hoop.transform.position, gameObject.transform.position);
 
 
-        var ballToHoopVector = basket.transform.position - gameObject.transform.position;
-        var ballToHoopAngle = Vector3.Angle(basket.transform.position, gameObject.transform.position);
-
+        var ballToHoopAngle2D = Mathf.Rad2Deg * Mathf.Atan2(hoop.transform.position.z - ball.transform.position.z, hoop.transform.position.x - ball.transform.position.x);
+        //ballToHoopAngle2D -= 90;
 
         //force.z = force.magnitude;
         //force /= (Time.time - mouseDownTime);
@@ -53,22 +55,71 @@ public class Controller3 : BallController
 
         var mouseVectorWithoutVertical = new Vector3(mouseVector.x, 0, mouseVector.z); // z zaten zero
         var mouseVectorVerticalLength = Mathf.Abs(mouseVector.y);
+        //var rotatedVectorMouseAngle = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg;
 
 
-        Vector3 rotatedVector = ballToHoopVector;
+        var mouseVectorAngle = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg;
+        //mouseVectorWithoutVerticalAngle += 90;
 
-        if (ballToHoopAngle > 30)
+        Vector3 rotatedVector;
+
+        var directionAngle = Mathf.Atan2(ballToHoopVector.y, ballToHoopVector.z) * Mathf.Rad2Deg;
+        var targetAngle = 55;
+
+        if (directionAngle < targetAngle)
         {
-            rotatedVector = Quaternion.AngleAxis(30, Vector3.left) * ballToHoopVector;
+            rotatedVector = Quaternion.AngleAxis(targetAngle - directionAngle, Vector3.left) * ballToHoopVector;
+        }
+        else
+        {
+            rotatedVector = ballToHoopVector;
         }
 
-        gameObject.GetComponent<Rigidbody>().AddForce(rotatedVector.normalized * ballMoveFactor * mouseVectorVerticalLength);
-        gameObject.GetComponent<Rigidbody>().AddForce(mouseVectorWithoutVertical.normalized * mouseFactor);
+        //var angleDiff = ballToHoopAngle2D - mouseVectorAngle;
 
+        var zeroDegreeForBall = ballToHoopAngle2D - 90;
+        var combinedVec = zeroDegreeForBall + mouseVectorAngle;
+
+        //var asd3 = Quaternion.AngleAxis(asd2, Vector3.left) * Vector3.right;
+
+        //var rotatedMouseVector = Quaternion.AngleAxis(angleDiff, Vector3.left) * mouseVectorWithoutVertical.normalized;
+
+        var forceVec = Quaternion.AngleAxis(combinedVec, Vector3.down) * Vector3.right;
+
+        if (mouseVectorAngle < 0)
+        {
+            rotatedVector = -ballToHoopVector;
+        }
+
+        //gameObject.GetComponent<Rigidbody>().AddForce(forceVec.normalized * mouseFactor);
+
+
+        gameObject.GetComponent<Rigidbody>().AddForce(mouseFactor * mouseVectorWithoutVertical.magnitude * forceVec.normalized / 100);
+        gameObject.GetComponent<Rigidbody>().AddForce(rotatedVector.normalized * ballMoveFactor * mouseVectorVerticalLength / 100);
+
+
+
+        Debug.Log("dirAngle: " + directionAngle);
         Debug.Log("ballToHoopAngle: " + ballToHoopAngle);
-        Debug.Log("mouseVector: " + mouseVector);
-        Debug.Log("mouseVectorWithoutVertical: " + mouseVectorWithoutVertical);
-        Debug.Log("ballToHoopVector.normalized: " + ballToHoopVector.normalized);
+
+        //Debug.Log("mouseVectorWithoutVertical.magnitude: " + mouseVectorWithoutVertical.magnitude);
+        //Debug.Log("zeroDegreeForBall: " + zeroDegreeForBall);
+        //Debug.Log("ballToHoopAngle2D: " + ballToHoopAngle2D);
+        Debug.Log("mouseVectorAngle: " + mouseVectorAngle);
+        //Debug.Log("combinedVec: " + combinedVec);
+
+
+
+        //Debug.Log("ballToHoopAngle: " + ballToHoopAngle);
+        //Debug.Log("mouseVector: " + mouseVector.normalized);
+        //Debug.Log("mouseVectorWithoutVertical: " + mouseVectorWithoutVertical);
+        //Debug.Log("mouseVectorWithoutVerticalAngle: " + mouseVectorAngle);
+        //Debug.Log("angleDiff: " + angleDiff);
+
+        //Debug.Log("rotatedVectorMouseAngle: " + rotatedVectorMouseAngle);
+        //Debug.Log("rotatedVectorMouseAngle: " + rotatedVectorMouseAngle);
+        //Debug.Log("mouseVectorWithoutVertical: " + mouseVectorWithoutVertical);
+        //Debug.Log("ballToHoopVector.normalized: " + ballToHoopVector.normalized);
 
         //gameObject.GetComponent<Rigidbody>().AddForce((((basket.transform.position - gameObject.transform.position).normalized * (force.magnitude * factor)) + force) * factor);
 
@@ -163,7 +214,7 @@ public class Controller3 : BallController
     // Start is called before the first frame update
     void Start()
     {
-        
+        ball = gameObject;
     }
 
     // Update is called once per frame
