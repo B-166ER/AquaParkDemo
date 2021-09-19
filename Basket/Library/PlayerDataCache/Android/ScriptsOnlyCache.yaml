@@ -4,12 +4,16 @@ ScriptsOnlyBuild:
     - BallBehaviour
     - BasketBehaviour
     - CineMachineAxisLock
+    - Controller1
+    - Controller2
+    - Controller3
     - DownBallDetector
     - EmitterBehaviour
     - FindPosition
     - GameManager
     - GravityWell
     - Ground
+    - Guide2Behaviour
     - GuideBehaviour
     - GuideNode
     - Swipe
@@ -95,51 +99,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12102}
     - Class: 114
-      Script: {instanceID: 12572}
+      Script: {instanceID: 12336}
     - Class: 114
-      Script: {instanceID: 12610}
+      Script: {instanceID: 12574}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12690}
+      Script: {instanceID: 12616}
     - Class: 114
-      Script: {instanceID: 12762}
+      Script: {instanceID: 12680}
     - Class: 114
-      Script: {instanceID: 12850}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 12882}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 12948}
+      Script: {instanceID: 12768}
     - Class: 114
-      Script: {instanceID: 12988}
+      Script: {instanceID: 12856}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 12888}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 12954}
     - Class: 114
-      Script: {instanceID: 13122}
+      Script: {instanceID: 12994}
     - Class: 114
-      Script: {instanceID: 13264}
+      Script: {instanceID: 13024}
     - Class: 114
-      Script: {instanceID: 13410}
+      Script: {instanceID: 13124}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13128}
     - Class: 114
-      Script: {instanceID: 13486}
+      Script: {instanceID: 13254}
     - Class: 114
-      Script: {instanceID: 13510}
+      Script: {instanceID: 13272}
     - Class: 114
-      Script: {instanceID: 13726}
+      Script: {instanceID: 13418}
     - Class: 114
-      Script: {instanceID: 13758}
+      Script: {instanceID: 13436}
     - Class: 114
-      Script: {instanceID: 13912}
+      Script: {instanceID: 13494}
     - Class: 114
-      Script: {instanceID: 13954}
+      Script: {instanceID: 13518}
     - Class: 114
-      Script: {instanceID: 14150}
+      Script: {instanceID: 13736}
     - Class: 114
-      Script: {instanceID: 14180}
+      Script: {instanceID: 13768}
+    - Class: 114
+      Script: {instanceID: 13922}
+    - Class: 114
+      Script: {instanceID: 13964}
+    - Class: 114
+      Script: {instanceID: 14160}
+    - Class: 114
+      Script: {instanceID: 14190}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -385,6 +397,12 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Guide2Behaviour
+  - hash:
+      serializedVersion: 2
       Hash: ef5c43f921427d03730f6ea4c848f07d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -481,7 +499,13 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 6ff68c82a0f2f1f6cacfc546acd016bf
+      Hash: 65189fc232650defb0d893bea2575852
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Controller1
+  - hash:
+      serializedVersion: 2
+      Hash: 043dc95c1a7a969a60abee6918c01cfa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BallBehaviour
@@ -497,6 +521,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachinePOV
+  - hash:
+      serializedVersion: 2
+      Hash: d92748e71280b36dd7dcfea9dca9bc3b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Controller3
   - hash:
       serializedVersion: 2
       Hash: 1c710009410abcdcd220be025aa2a6fd
@@ -617,6 +647,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineTargetGroup
+  - hash:
+      serializedVersion: 2
+      Hash: cc1c4f2ee237422884ed74f922b8348d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Controller2
   - hash:
       serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
@@ -974,4 +1010,5 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/utk-Main/Documents/GitHub/AquaParkDemo/Basket/Builds/Builds.apk
+  playerPath: C:/Users/utk-Main/Documents/GitHub/AquaParkDemo/Basket/Builds/1st modified
+    final2.apk
