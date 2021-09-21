@@ -34,7 +34,8 @@ public class BallBehaviour : MonoBehaviour
     {
 
         ////////////////////// omitted . delete orbital movement all together needed //////////////////////
-        
+
+        Debug.Log("hey");
         // brake orbital movement
         velocityCache = gameObject.GetComponent<Rigidbody>().velocity;
         velocityCache.x = (velocityCache.x / 100) * orbitalMovementBreakerPercent;
@@ -62,9 +63,11 @@ public class BallBehaviour : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Ground>() != null)
         {
-            activeController.PushTheBall();
+            //standart sekme harketi için
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 300f, 0f));
             AfterBounce();
+            activeController.WaitTouchGroundAndPush();
+            //            gameObject.GetComponent<Rigidbody>().AddForce(activeController.TheForceThatIsWaitingToBeAddedOneRigidBody);
         }
 
     }

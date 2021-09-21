@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
 
     // the event that will be fired after the shot
     public event Action onShotOccured;
+
+    [SerializeField] public bool isMouseEventTimeRelevant;
+    [SerializeField] public bool waitForTouchGroundBeforePush;
     public void ShotOccured()
     {
         if(onShotOccured != null)

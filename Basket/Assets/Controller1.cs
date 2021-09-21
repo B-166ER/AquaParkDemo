@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller1 : BallController
 {
     [SerializeField] SwipeControls sControls;
-    public override void PushTheBall()
+    public override void PushTheBallImmediately(Vector3 f)
     {
         gameObject.GetComponent<Rigidbody>().AddForce(sControls.ConfirmedPushLocationWhenThouched);
         sControls.ClearAfterBounce();

@@ -4,68 +4,114 @@ using UnityEngine;
 
 public class Controller2 : BallController
 {
+
     [Range(1, 100)]
     [SerializeField] float factor = 10f;
 
-    private float startTime ;
-    private Vector3 startPos  ;
+    private float startTime;
+    private Vector3 startPos;
 
+    [SerializeField] GameObject TargetReObject2;
+    [SerializeField] GameObject Vguide;
+
+    public float angleaxisVal = -90f;
+    public GameObject TargetRelativeObject;
+    public float angleBetweenBallAndTarget;
 
     ////delsasap
-    public Vector3 stPos;
+    Vector3 stPos;
     ////delsasap
-    public Vector3 enPos;
+    Vector3 enPos;
+
+    [SerializeField] Vector3 lastMouseMovement;
+    [SerializeField] float mouseMovementTime;
+    [Range(-1,1)][SerializeField] float pushtTimeMultiplier;
 
     void CustomMouseDown()
     {
-        Debug.Log("herllo1");
         startTime = Time.time;
         startPos = Input.mousePosition;
-        startPos.z = startPos.y;
-        startPos.y = 0;
 
         ////delsasap
         stPos = startPos;
     }
-
+    public float angleAxisVal;
     void CustomOnMouseUp()
     {
-        Debug.Log("herllo2");
         var endPos = Input.mousePosition;
-        endPos.z = endPos.y;
-        endPos.y = 0;
 
         var force = endPos - startPos;
-        //force.z = force.magnitude;
-        force /= (Time.time - startTime);
+        Vector3 mouseRay = endPos - startPos;
+        //if you wanna use time
+        mouseMovementTime /= (Time.time - startTime);
+
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.position + mouseRay, Color.black, 10f);
+        Vector3 rotated = Quaternion.AngleAxis(90, gameObject.transform.right) * mouseRay;
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.position + rotated, Color.blue, 10f);
 
 
-        //gameObject.GetComponent<Rigidbody>().AddRelativeForce(force / factor);
+        Vector3 targetDir = TargetReObject2.transform.position - transform.position;
+        Vector3 forward = transform.forward;
+        angle = Vector3.SignedAngle(targetDir, forward, Vector3.up);
+        angle *= -1;
+        Vector3 rotaatedforRelative = Quaternion.AngleAxis(angle, Vector3.up) * rotated;
 
-        gameObject.GetComponent<Rigidbody>().AddForce(force / factor);
+
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.position + rotaatedforRelative, Color.yellow, 10f);
+
+        //pointer movement is y&x 
+        lastMouseMovement = endPos - startPos;
+        if(lastMouseMovement.y > 0) rotaatedforRelative.y += lastMouseMovement.y * pushBallUpDependingOnMouseY;
+
+        if (GameManager.instance.waitForTouchGroundBeforePush == false) PushTheBallImmediately(rotaatedforRelative);
+        else 
+        { 
+            TheForceThatIsWaitingToBeAddedOneRigidBody = rotaatedforRelative;
+        }
 
 
-        ////delsasap
-         enPos = endPos;
-        Debug.DrawRay(gameObject.transform.position, enPos - stPos, Color.red, 3f);
     }
 
-    public override void PushTheBall()
-    {
-    }
+    [Range(0, 3)] [SerializeField] float pushBallUpDependingOnMouseY;
 
 
+
+    public float angle;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("custom down");
             CustomMouseDown();
         }
         if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("custom up");
             CustomOnMouseUp();
         }
+
     }
+
+    public override void PushTheBallImmediately(Vector3 force)
+    {
+
+        if (GameManager.instance.isMouseEventTimeRelevant == true)
+        {
+            Vector3 tmp = Vector3.one;
+            tmp *= (mouseMovementTime * pushtTimeMultiplier);
+            force = tmp;
+            Debug.Log("force :" + force);
+            gameObject.GetComponent<Rigidbody>().AddForce(force);
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(force);
+        }
+
+    }
+
+
+
 
 }

@@ -203,7 +203,7 @@ public class Controller3 : BallController
         Debug.DrawRay(gameObject.transform.position, enPos - stPos, Color.red, 3f);
     }
 
-    public override void PushTheBall()
+    public override void PushTheBallImmediately(Vector3 f)
     {
 
         
